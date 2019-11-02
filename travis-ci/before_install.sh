@@ -44,7 +44,7 @@ esac
 cd ~
 wget https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.3/wxWidgets-3.1.3.tar.bz2
 tar -xjf wxWidgets-3.1.3.tar.bz2
-cd wxWidgets-3.1.3.tar.bz2
+cd wxWidgets-3.1.3
 mkdir gtk-build
 cd gtk-build
 ../configure --enable-unicode --enable-debug
