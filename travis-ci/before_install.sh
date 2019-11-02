@@ -49,5 +49,5 @@ mkdir gtk-build
 cd gtk-build
 ../configure --enable-unicode --enable-debug
 make -j wxPROC_COUNT
-make install
+sudo make install
 wx-config --version
