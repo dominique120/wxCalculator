@@ -13,8 +13,8 @@ branches:
         - master
 
 before_install: 
-  - chmod +x /travis-ci/before_install.sh
-  - chmod +x /travis-ci/build.sh
+  - chmod +x ~/dominique120/wxCalculator/travis-ci/before_install.sh
+  - chmod +x ~/dominique120/wxCalculator/travis-ci/build.sh
   - bash ./travis-ci/before_install.sh
 
 script: bash ./travis-ci/build.sh
