@@ -1,5 +1,5 @@
-git clone https://github.com/dominique120/wxCalculator.git
-cd wxCalculator
+cd ~
+cd dominique120/wxCalculator
 
 echo "Building:"
 g++ cApp.cpp `wx-config --cxxflags --libs` -o cApp.o -c -std=c++11
