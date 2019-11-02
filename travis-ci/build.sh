@@ -1,5 +1,5 @@
 cd ~
-cd dominique120/wxCalculator
+cd dominique120/wxCalculator/wxWidgetsProjectFour-Calculator
 
 echo "Building:"
 g++ cApp.cpp `wx-config --cxxflags --libs` -o cApp.o -c -std=c++11
