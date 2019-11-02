@@ -41,7 +41,7 @@ case $(uname -s) in
         ;;
 esac
 
-cd ~
+
 wget https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.3/wxWidgets-3.1.3.tar.bz2
 tar -xjf wxWidgets-3.1.3.tar.bz2
 cd wxWidgets-3.1.3
@@ -51,3 +51,6 @@ cd gtk-build
 make -j wxPROC_COUNT
 sudo make install
 wx-config --version
+cd ..
+cd ..
+
