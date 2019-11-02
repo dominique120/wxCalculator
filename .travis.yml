@@ -1,0 +1,18 @@
+language: cpp
+sudo: required
+
+matrix:
+    include:
+        - dist: precise
+          compiler: gcc
+        - dist: trusty
+          compiler: gcc
+
+branches:
+    only:
+        - master
+
+before_install: ./travis-ci/before_install.sh
+
+script: bash ./travis-ci/build.sh
+
