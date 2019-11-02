@@ -3,7 +3,7 @@ sudo: required
 
 matrix:
     include:
-        - dist: precise
+        - dist: xenial
           compiler: gcc
         - dist: trusty
           compiler: gcc

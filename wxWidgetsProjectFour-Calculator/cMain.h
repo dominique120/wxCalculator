@@ -23,6 +23,8 @@ public:
 	bool DivisionFlag = false;
 	bool SubtractionFlag = false;
 
+	bool isReset = false;
+
 public:
 	wxButton* m_number_0 = nullptr;
 	wxButton* m_number_1 = nullptr;

@@ -128,6 +128,9 @@ void cMain::OnNumberNine(wxCommandEvent& evt)
 
 void cMain::OnOperationPlus(wxCommandEvent& evt)
 {
+	if (m_active_number->GetLineLength(1) == 0)
+		return;
+
 	if (!AdditionFlag)
 	{
 		op1 = StringToFloat(m_active_number->GetValue());
@@ -150,6 +153,9 @@ void cMain::OnOperationPlus(wxCommandEvent& evt)
 
 void cMain::OnOperationMinus(wxCommandEvent& evt)
 {
+	if (m_active_number->GetLineLength(1) == 0)
+		return;
+
 	if (!SubtractionFlag)
 	{
 		op1 = StringToFloat(m_active_number->GetValue());
@@ -172,6 +178,9 @@ void cMain::OnOperationMinus(wxCommandEvent& evt)
 
 void cMain::OnOperationDivide(wxCommandEvent& evt)
 {
+	if (m_active_number->GetLineLength(1) == 0)
+		return;
+
 	if (!DivisionFlag)
 	{
 		op1 = StringToFloat(m_active_number->GetValue());
@@ -194,6 +203,9 @@ void cMain::OnOperationDivide(wxCommandEvent& evt)
 
 void cMain::OnOperationMultiply(wxCommandEvent& evt)
 {
+	if (m_active_number->GetLineLength(1) == 0)
+		return;
+
 	if (!MultiplyFlag)
 	{
 		op1 = StringToFloat(m_active_number->GetValue());
@@ -216,6 +228,9 @@ void cMain::OnOperationMultiply(wxCommandEvent& evt)
 
 void cMain::OnEquals(wxCommandEvent& evt)
 {
+	if (m_active_number->GetLineLength(1) == 0)
+		return;
+
 	if (AdditionFlag) 
 	{
 		op2 = StringToFloat(m_active_number->GetValue());
@@ -262,24 +277,33 @@ void cMain::OnExtraDecimal(wxCommandEvent& evt)
 	if (!isDecimal)
 	{
 		m_active_number->AppendText(".");
-		isDecimal = true;
+		return;
 	}
 	evt.Skip();
 }
 
 void cMain::OnExtraSign(wxCommandEvent& evt)
 {
-	float aux = StringToFloat(m_active_number->GetValue());
-	float ret = aux * -1;
-	wxString mystring = FloatToString(ret);
+	if (m_active_number->GetLineLength(1) == 0)
+		return;
+	
+		float aux = StringToFloat(m_active_number->GetValue());
+		float ret = aux * -1;
+		wxString mystring = FloatToString(ret);
 
-	m_active_number->SetValue(mystring);
+		m_active_number->SetValue(mystring);
 
-	evt.Skip();
+		evt.Skip();
+	
 }
 
 void cMain::OnExtraMemoryPlus(wxCommandEvent& evt)
 {
+	if (m_active_number->GetLineLength(1) == 0)
+		return;
+
+	//TODO: Implement MemoryPlus feature
+
 	evt.Skip();
 }
 
@@ -303,6 +327,7 @@ void cMain::OnExtraClearChar(wxCommandEvent& evt)
 void cMain::ResetNumber()
 {
 	isDecimal = false;
+	isReset = true;
 	m_active_number->Clear();
 }
 
@@ -313,6 +338,7 @@ void cMain::ResetFlags()
 	MultiplyFlag = false;
 	SubtractionFlag = false;
 	isDecimal = false;
+	isReset = false;
 }
 
 float cMain::StringToFloat(wxString str)
