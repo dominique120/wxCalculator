@@ -3,6 +3,8 @@
 #include "wx/wx.h"
 #include <string>
 #include <iostream>
+#include <iomanip>
+#include <sstream>
 
 class cMain : public wxFrame
 {
@@ -11,10 +13,12 @@ public:
 	~cMain();
 
 public:
-	float op1 = 0;
-	float op2 = 0;
+	double op1 = 0;
+	double op2 = 0;
 
-	float ret = 0;
+	double ret = 0;
+
+	int DecimalCounter = 0;
 
 	bool isDecimal = false;
 
@@ -82,8 +86,8 @@ public:
 	void ResetNumber();
 	void ResetFlags();
 
-	float StringToFloat(wxString str);
-	wxString FloatToString(float f);
+	double StringToDouble(wxString str);
+	wxString DoubleToString(double d);
 
 	wxDECLARE_EVENT_TABLE();
 };

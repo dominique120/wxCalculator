@@ -68,60 +68,110 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "wxWidgets Calculator", wxPoint(30, 
 
 void cMain::OnNumberZero(wxCommandEvent& evt)
 {
+	if (isDecimal && DecimalCounter > 15)
+		return;
+	else if (isDecimal && DecimalCounter < 15)
+		++DecimalCounter;
+
 	m_active_number->AppendText("0");
 	evt.Skip();
 }
 
 void cMain::OnNumberOne(wxCommandEvent& evt)
 {
+	if (isDecimal && DecimalCounter > 15)
+		return;
+	else if (isDecimal && DecimalCounter < 15)
+		++DecimalCounter;
+
 	m_active_number->AppendText("1");
 	evt.Skip();
 }
 
 void cMain::OnNumberTwo(wxCommandEvent& evt)
 {
+	if (isDecimal && DecimalCounter > 15)
+		return;
+	else if (isDecimal && DecimalCounter < 15)
+		++DecimalCounter;
+
 	m_active_number->AppendText("2");
 	evt.Skip();
 }
 
 void cMain::OnNumberThree(wxCommandEvent& evt)
 {
+	if (isDecimal && DecimalCounter > 15)
+		return;
+	else if (isDecimal && DecimalCounter < 15)
+		++DecimalCounter;
+
 	m_active_number->AppendText("3");
 	evt.Skip();
 }
 
 void cMain::OnNumberFour(wxCommandEvent& evt)
 {
+	if (isDecimal && DecimalCounter > 15)
+		return;
+	else if (isDecimal && DecimalCounter < 15)
+		++DecimalCounter;
+
 	m_active_number->AppendText("4");
 	evt.Skip();
 }
 
 void cMain::OnNumberFive(wxCommandEvent& evt)
 {
+	if (isDecimal && DecimalCounter > 15)
+		return;
+	else if (isDecimal && DecimalCounter < 15)
+		++DecimalCounter;
+
 	m_active_number->AppendText("5");
 	evt.Skip();
 }
 
 void cMain::OnNumberSix(wxCommandEvent& evt)
 {
+	if (isDecimal && DecimalCounter > 15)
+		return;
+	else if (isDecimal && DecimalCounter < 15)
+		++DecimalCounter;
+
 	m_active_number->AppendText("6");
 	evt.Skip();
 }
 
 void cMain::OnNumberSeven(wxCommandEvent& evt)
 {
+	if (isDecimal && DecimalCounter > 15)
+		return;
+	else if (isDecimal && DecimalCounter < 15)
+		++DecimalCounter;
+
 	m_active_number->AppendText("7");
 	evt.Skip();
 }
 
 void cMain::OnNumberEight(wxCommandEvent& evt)
 {
+	if (isDecimal && DecimalCounter > 15)
+		return;
+	else if (isDecimal && DecimalCounter < 15)
+		++DecimalCounter;
+
 	m_active_number->AppendText("8");
 	evt.Skip();
 }
 
 void cMain::OnNumberNine(wxCommandEvent& evt)
 {
+	if (isDecimal && DecimalCounter >= 15)
+		return;
+	else if (isDecimal && DecimalCounter < 15)
+		++DecimalCounter;
+
 	m_active_number->AppendText("9");
 	evt.Skip();
 }
@@ -133,18 +183,18 @@ void cMain::OnOperationPlus(wxCommandEvent& evt)
 
 	if (!AdditionFlag)
 	{
-		op1 = StringToFloat(m_active_number->GetValue());
+		op1 = StringToDouble(m_active_number->GetValue());
 		AdditionFlag = true;
 		m_results_list->AppendAndEnsureVisible(" + " + m_active_number->GetValue());
 		ResetNumber();
 	}
 	else if (AdditionFlag)
 	{
-		op2 = StringToFloat(m_active_number->GetValue());
+		op2 = StringToDouble(m_active_number->GetValue());
 		ret = op1 + op2;
 		op1 = ret;
 		m_results_list->AppendAndEnsureVisible(" + " + m_active_number->GetValue());
-		m_results_list->AppendAndEnsureVisible(" = " + FloatToString(ret));
+		m_results_list->AppendAndEnsureVisible(" = " + DoubleToString(ret));
 		ResetNumber();
 	}
 
@@ -158,18 +208,18 @@ void cMain::OnOperationMinus(wxCommandEvent& evt)
 
 	if (!SubtractionFlag)
 	{
-		op1 = StringToFloat(m_active_number->GetValue());
+		op1 = StringToDouble(m_active_number->GetValue());
 		SubtractionFlag = true;
 		m_results_list->AppendAndEnsureVisible(" - " + m_active_number->GetValue());
 		ResetNumber();
 	}
 	else if (SubtractionFlag)
 	{
-		op2 = StringToFloat(m_active_number->GetValue());
+		op2 = StringToDouble(m_active_number->GetValue());
 		ret = op1 - op2;
 		op1 = ret;
 		m_results_list->AppendAndEnsureVisible(" - " + m_active_number->GetValue());
-		m_results_list->AppendAndEnsureVisible(" = " + FloatToString(ret));
+		m_results_list->AppendAndEnsureVisible(" = " + DoubleToString(ret));
 		ResetNumber();
 	}
 
@@ -183,18 +233,18 @@ void cMain::OnOperationDivide(wxCommandEvent& evt)
 
 	if (!DivisionFlag)
 	{
-		op1 = StringToFloat(m_active_number->GetValue());
+		op1 = StringToDouble(m_active_number->GetValue());
 		DivisionFlag = true;
 		m_results_list->AppendAndEnsureVisible(" / " + m_active_number->GetValue());
 		ResetNumber();
 	}
 	else if (DivisionFlag)
 	{
-		op2 = StringToFloat(m_active_number->GetValue());
+		op2 = StringToDouble(m_active_number->GetValue());
 		ret = op1 / op2;
 		op1 = ret;
 		m_results_list->AppendAndEnsureVisible(" / " + m_active_number->GetValue());
-		m_results_list->AppendAndEnsureVisible(" = " + FloatToString(ret));
+		m_results_list->AppendAndEnsureVisible(" = " + DoubleToString(ret));
 		ResetNumber();
 	}
 
@@ -208,18 +258,18 @@ void cMain::OnOperationMultiply(wxCommandEvent& evt)
 
 	if (!MultiplyFlag)
 	{
-		op1 = StringToFloat(m_active_number->GetValue());
+		op1 = StringToDouble(m_active_number->GetValue());
 		MultiplyFlag = true;
 		m_results_list->AppendAndEnsureVisible(" * " + m_active_number->GetValue());
 		ResetNumber();
 	}
 	else if (MultiplyFlag)
 	{
-		op2 = StringToFloat(m_active_number->GetValue());
+		op2 = StringToDouble(m_active_number->GetValue());
 		ret = op1 * op2;
 		op1 = ret;
 		m_results_list->AppendAndEnsureVisible(" * " + m_active_number->GetValue());
-		m_results_list->AppendAndEnsureVisible(" = " + FloatToString(ret));
+		m_results_list->AppendAndEnsureVisible(" = " + DoubleToString(ret));
 		ResetNumber();
 	}
 
@@ -233,37 +283,37 @@ void cMain::OnEquals(wxCommandEvent& evt)
 
 	if (AdditionFlag) 
 	{
-		op2 = StringToFloat(m_active_number->GetValue());
+		op2 = StringToDouble(m_active_number->GetValue());
 		ret = op1 + op2;
 		m_results_list->AppendAndEnsureVisible(" + " + m_active_number->GetValue());
-		m_results_list->AppendAndEnsureVisible(" = " + FloatToString(ret));
+		m_results_list->AppendAndEnsureVisible(" = " + DoubleToString(ret));
 		ResetFlags();
 		ResetNumber();
 	}
 	else if (MultiplyFlag)
 	{
-		op2 = StringToFloat(m_active_number->GetValue());
+		op2 = StringToDouble(m_active_number->GetValue());
 		ret = op1 * op2;
 		m_results_list->AppendAndEnsureVisible(" * " + m_active_number->GetValue());
-		m_results_list->AppendAndEnsureVisible(" = " + FloatToString(ret));
+		m_results_list->AppendAndEnsureVisible(" = " + DoubleToString(ret));
 		ResetFlags();
 		ResetNumber();
 	}
 	else if (DivisionFlag)
 	{
-		op2 = StringToFloat(m_active_number->GetValue());
+		op2 = StringToDouble(m_active_number->GetValue());
 		ret = op1 / op2;
 		m_results_list->AppendAndEnsureVisible(" / " + m_active_number->GetValue());
-		m_results_list->AppendAndEnsureVisible(" = " + FloatToString(ret));
+		m_results_list->AppendAndEnsureVisible(" = " + DoubleToString(ret));
 		ResetFlags();
 		ResetNumber();
 	}
 	else if (SubtractionFlag)
 	{
-		op2 = StringToFloat(m_active_number->GetValue());
+		op2 = StringToDouble(m_active_number->GetValue());
 		ret = op1 - op2;
 		m_results_list->AppendAndEnsureVisible(" - " + m_active_number->GetValue());
-		m_results_list->AppendAndEnsureVisible(" = " + FloatToString(ret));
+		m_results_list->AppendAndEnsureVisible(" = " + DoubleToString(ret));
 		ResetFlags();
 		ResetNumber();
 	}
@@ -273,11 +323,10 @@ void cMain::OnEquals(wxCommandEvent& evt)
 
 void cMain::OnExtraDecimal(wxCommandEvent& evt)
 {
-	// TODO: Remove IsDecimal flag if the decimal point is removed
 	if (!isDecimal)
 	{
 		m_active_number->AppendText(".");
-		return;
+		isDecimal = true;
 	}
 	evt.Skip();
 }
@@ -287,14 +336,13 @@ void cMain::OnExtraSign(wxCommandEvent& evt)
 	if (m_active_number->GetLineLength(1) == 0)
 		return;
 	
-		float aux = StringToFloat(m_active_number->GetValue());
-		float ret = aux * -1;
-		wxString mystring = FloatToString(ret);
-
-		m_active_number->SetValue(mystring);
-
-		evt.Skip();
+	double aux = StringToDouble(m_active_number->GetValue());
+	double ret = aux * - 1;
+	wxString mystring = DoubleToString(ret);
 	
+	m_active_number->SetValue(mystring);
+
+	evt.Skip();
 }
 
 void cMain::OnExtraMemoryPlus(wxCommandEvent& evt)
@@ -316,10 +364,16 @@ void cMain::OnExtraClearNumber(wxCommandEvent& evt)
 
 void cMain::OnExtraClearChar(wxCommandEvent& evt)
 {
+	if (m_active_number->GetRange(m_active_number->GetLastPosition() - 1, m_active_number->GetLastPosition()) == '.')
+		isDecimal = false;
+
 	if (m_active_number->GetLineLength(1) == 0)
 		ResetNumber();
 	else
 		m_active_number->Remove(m_active_number->GetLastPosition()-1, m_active_number->GetLastPosition());
+
+	if (isDecimal && DecimalCounter < 15)
+		--DecimalCounter;
 
 	evt.Skip();
 }
@@ -329,6 +383,7 @@ void cMain::ResetNumber()
 	isDecimal = false;
 	isReset = true;
 	m_active_number->Clear();
+	DecimalCounter = 0;
 }
 
 void cMain::ResetFlags()
@@ -341,15 +396,27 @@ void cMain::ResetFlags()
 	isReset = false;
 }
 
-float cMain::StringToFloat(wxString str)
+double cMain::StringToDouble(wxString str)
 {
-	return std::stof(std::string(str));
+	return std::stod(std::string(str));
 }
 
-wxString cMain::FloatToString(float f)
+wxString cMain::DoubleToString(double d)
 {
-	return wxString::Format(wxT("%f"), f);
+	std::stringstream buffer;
+	std::streambuf* old = std::cout.rdbuf(buffer.rdbuf());
+	std::cout << std::fixed << std::setprecision(15) << d << std::endl;
+	std::string text = buffer.str();
+
+	wxString txt = text;
+	return txt;
+
+	/*
+	wxString str;
+	return str << d;
+	*/
 }
+
 
 cMain::~cMain()
 {
